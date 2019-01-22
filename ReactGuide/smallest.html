@@ -1,62 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Smallest React Example</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="src/css/main.css" />
-    <script src="src/js/main.js"></script>
-</head>
-<body>
-    <!-- ... other HTML ... -->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm shadow p-4 my-2 border bg-primary text-white" id="hello"></div>
-            <div class="col-sm shadow p-4 my-2 border bg-secondary text-white" id="hellogreeting"></div>
-    
-            <!-- ... existing HTML ... -->
-            <div class="col-sm shadow p-4 my-2 border bg-info text-white" id="like_button_container"></div>
-            <!-- ... existing HTML ... -->    
-        </div>
-        <div class="row">
-            <div class="col-sm p-4 my-2 bg-dark text-white-50" id="timeslot"></div>
-            <div class="col-sm-4 p-4 my-2 border border-dark bg-transparent text-dark" id="propslot"></div>
-            <div class="col-sm-4 p-4 my-2 border border-dark bg-soft text-dark" id="propslot2"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 offset-md-4 p-4 my-2 bg-dark">
-                <div class="card">
-                    <div class="card-body" id="timeslot2"></div>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Smallest React Example</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href="src/css/main.css" />
+        <script src="src/js/main.js"></script>
+    </head>
+
+    <body>
+        <!-- ... other HTML ... -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm shadow p-4 my-2 border bg-primary text-white" id="hello"></div>
+                <div class="col-sm shadow p-4 my-2 border bg-secondary text-white" id="hellogreeting"></div>
+
+                <!-- ... existing HTML ... -->
+                <div class="col-sm shadow p-4 my-2 border bg-info text-white" id="like_button_container"></div>
+                <!-- ... existing HTML ... -->
+            </div>
+            <div class="row">
+                <div class="col-sm p-4 my-2 bg-dark text-white-50" id="timeslot"></div>
+                <div class="col-sm-4 p-4 my-2 border border-dark bg-transparent text-dark" id="propslot"></div>
+                <div class="col-sm-4 p-4 my-2 border border-dark bg-soft text-dark" id="propslot2"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 offset-md-4 p-4 my-2 bg-dark">
+                    <div class="card">
+                        <div class="card-body" id="timeslot2"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-4 my-2 bg-dark">
+                    <div class="card">
+                        <div class="card-body" id="clicky"></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 p-4 my-2 bg-dark">
-                <div class="card">
-                    <div class="card-body" id="clicky"></div>
+            <div class="row">
+                <div class="col-md-4 p-4 my-2 bg-rock">
+                    <div class="card">
+                        <div class="card-body" id="renderconditional"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-4 my-2 bg-info">
+                    <div class="card">
+                        <div class="card-body" id="login"></div>
+                    </div>
                 </div>
             </div>
-        </div>        
-    </div>
+        </div>
 
-    <!-- Load Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <!-- Load Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
 
-    <!-- Load React. -->
-    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <!-- Load React. -->
+        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-    <!-- Load our React components. -->
-    <script type="text/babel" src="src/js/helloworld.js"></script>    
-    <script type="text/babel" src="src/js/smallest.js"></script>
-    <script type="text/babel" src="src/js/renderelementary.js"></script>
-    <script type="text/babel" src="src/js/componentprops.js"></script>
-    <script type="text/babel" src="src/js/clock.js"></script>
-    <script type="text/babel" src="src/js/clicky.js"></script>
+        <!-- Load our React components. -->
+        <script type="text/babel" src="src/js/helloworld.js"></script>
+        <script type="text/babel" src="src/js/smallest.js"></script>
+        <script type="text/babel" src="src/js/renderelementary.js"></script>
+        <script type="text/babel" src="src/js/componentprops.js"></script>
+        <script type="text/babel" src="src/js/clock.js"></script>
+        <script type="text/babel" src="src/js/clicky.js"></script>
+        <script type="text/babel" src="src/js/renderwhen.js"></script>
 
-</body>
+    </body>
+
 </html>

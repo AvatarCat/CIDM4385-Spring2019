@@ -1,20 +1,42 @@
+function UserGreeting(props) {
+    return <h1>Welcome back!</h1>;
+  }
+  
+function GuestGreeting(props) {
+    return <h1>Please sign up.</h1>;
+}
+
+function Greeting(props) {
+    const isLoggedIn = props.isLoggedIn;
+    if (isLoggedIn) {
+      return <UserGreeting />;
+    }
+    return <GuestGreeting />;
+}
+  
+/* ReactDOM.render(
+    // Try changing to isLoggedIn={true}:
+    <Greeting isLoggedIn={true} />,
+    document.getElementById('renderconditional')
+); */
+
 function LoginButton(props) {
     return (
       <button onClick={props.onClick}>
         Login
       </button>
     );
-  }
+}
   
-  function LogoutButton(props) {
+function LogoutButton(props) {
     return (
       <button onClick={props.onClick}>
         Logout
       </button>
     );
-  }
+}
 
-  class LoginControl extends React.Component {
+class LoginControl extends React.Component {
     constructor(props) {
       super(props);
       this.handleLoginClick = this.handleLoginClick.bind(this);
@@ -51,5 +73,5 @@ function LoginButton(props) {
   
   ReactDOM.render(
     <LoginControl />,
-    document.getElementById('login')
+    document.getElementById('loginslot')
   );

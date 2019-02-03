@@ -1,3 +1,11 @@
 .bg-soft {
     background: rgb(151, 143, 201);
 }
+
+.pricing-header {
+max-width: 700px;
+}
+
+.card-deck .card {
+min-width: 220px;
+}

@@ -1,0 +1,34 @@
+.bg-soft {
+    background: rgb(151, 143, 201);
+}
+
+<<<<<<< HEAD
+.pricing-header {
+max-width: 700px;
+}
+
+.card-deck .card {
+min-width: 220px;
+=======
+.bg-rock {
+    background: rgba(215, 33, 110, 0.6)
+}
+
+.FancyBorder {
+    padding: 10px 10px;
+    border: 10px solid;
+}
+  
+.FancyBorder-blue {
+    border-color: blue;
+}
+  
+.Dialog-title {
+    margin: 0;
+    font-family: sans-serif;
+}
+  
+.Dialog-message {
+    font-size: larger;
+>>>>>>> d1a03286f9faf3498c3065c71d8bd6b11b99fa19
+}

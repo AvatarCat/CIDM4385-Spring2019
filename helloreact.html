@@ -6,16 +6,18 @@
     <title>Hello React</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>    
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>     
 
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
     <!--<script src="main.js"></script>-->
 </head>
 <body>
     <div id="ourFirstApp"></div>
-    <script type="text/javascript">
+    <script type="text/babel">
         //var mountTarget = document.getElementById('ourFirstApp');
-
+        
+        /*
         var root = 
             React.createElement('div', {}, 
                 React.createElement('h1', {}, "Hello, World!",
@@ -27,9 +29,27 @@
                     )
                 )
             );
+        */
+
+
 
         var mountTarget = document.getElementById('ourFirstApp');
-        ReactDOM.render(root, mountTarget);
+        //ReactDOM.render(root, mountTarget);
+
+        var content = (
+            <div>
+                <h1>Hello World</h1>
+                <a href="mailto:dude@example.com">
+                    <h1>React in Action</h1>
+                    <em>and it really is!</em>
+                </a>
+            </div>
+        );
+
+        ReactDOM.render(
+            content,
+            document.getElementById('ourFirstApp')
+        );
 
     </script>
 </body>

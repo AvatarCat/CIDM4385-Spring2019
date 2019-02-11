@@ -84,7 +84,7 @@ class PizzaBanditComponent extends React.Component{
     render() {
         return (
             <div className="container">            
-            <JumbotronComponent />
+                <JumbotronComponent />
                 <div id="pizzaform" className="row">
                     <div className="col">
                         <form>

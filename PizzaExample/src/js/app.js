@@ -24,108 +24,47 @@ class PizzaEntry extends React.Component {
     //constructor
     constructor(props){
         super(props);
-    }    
+
+        this.state = {
+            selected_pizza: '',
+            style_value: 'btn btn-lg btn-block btn-primary',
+        };
+
+        this.handleSelectedPizzaButtonClick = this.handleSelectedPizzaButtonClick.bind(this);
+
+    }
+
+    handleSelectedPizzaButtonClick(event){
+
+        //badge badge-success
+        this.setState( () => {
+                return {
+                    style_value: "btn btn-lg btn-block btn-success"
+                }
+            }
+        );        
+
+        this.props.onClick(event.target.value);
+    }
 
     render() {
+
+        const selected_pizza = this.props.pizza_type;
+
         return (
             <div className="card bg-light mb-3">
                 <img src={"src/img/" + this.props.pizza_type + ".png"} className="card-img-top" alt={this.props.pizza_type + " Pizza"} />
                 <div className="card-body">
                     <h5 className="card-title">{this.props.pizza_type} Pizza</h5>
                     <p className="card-text">A tasty {this.props.pizza_type} Pizza from a local provider.</p>
-                    <button type="button" className="btn btn-lg btn-block btn-primary">Select {this.props.pizza_type} Pizza</button>
+                    <button className={this.state.style_value}
+                            onClick={this.handleSelectedPizzaButtonClick}
+                            value={selected_pizza} >
+                        Select {this.props.pizza_type} Pizza
+                    </button>
                 </div>
             </div>
         );        
-    }
-}
-
-class ZipCodeInput extends React.Component {
-
-    //constructor
-    constructor(props){
-        super(props);
-        this.state = {delivery_zipcode: ''}; 
-
-        this.handleZipcodeChange = this.handleZipcodeChange.bind(this);
-
-    }
-
-    handleZipcodeChange(event){
-        const delivery_zipcode = event.target.value;
-        this.setState( () => {
-                return {
-                    delivery_zipcode
-                }
-            }
-        );
-
-        const zip = this.state.delivery_zipcode;
-
-        this.props.handleZipcode(zip);
-    }    
-
-    render() {
-        return (
-            <div className="form-group">
-                <input className="form-control" 
-                       id="zipcodeInput" 
-                       onChange={this.handleZipcodeChange}                       
-                       placeholder="Delivery zip code" 
-                       type="input"
-                       value={this.state.delivery_zipcode}  />
-            </div>
-        );
-    };
-}
-
-class UserAccountInput extends React.Component {
-    
-    //constructor
-    constructor(props) {
-        super(props);
-        
-        this.state = {customer_email: ''};
-
-        this.handleEmailChange = this.handleEmailChange.bind(this);        
-        this.handleEmailSubmit = this.handleEmailSubmit.bind(this);
-    };
-
-    handleEmailChange(event){
-        const customer_email = event.target.value;
-        this.setState( () => {
-                return {
-                    customer_email
-                }
-            }
-        );
-    }
-
-    //button clicked
-    handleEmailSubmit(event){
-
-        this.props.handleOrderSubmit(this.state.customer_email);
-    }
-
-    render() {
-        return (
-            <div className="input-group mb-3">
-                <input 
-                    className="form-control"            
-                    id="emailInput"
-                    onChange={this.handleEmailChange}
-                    placeholder="User email address"
-                    type="text"
-                    value={this.state.customer_email} />
-                <div className="input-group-append">
-                    <button className="btn btn-primary" 
-                            id="button-addon2"
-                            onClick={this.handleEmailSubmit}>
-                        Submit
-                    </button>
-                </div>
-            </div>  
-        );
     }
 }
 
@@ -135,9 +74,9 @@ class PizzaForm extends React.Component{
         super(props);
 
         this.initialState = {       
+            customer_email: '',            
             delivery_zipcode:'',
             order_date: new Date(),
-            order_email: '',
             pizza_type: '',
         }
 
@@ -145,35 +84,56 @@ class PizzaForm extends React.Component{
 
         //associate method as property
         this.handleOrderSubmit   = this.handleOrderSubmit.bind(this);
-        this.handleSelectPizza   = this.handleSelectPizza.bind(this);
-        this.handleZipcode       = this.handleZipcode.bind(this);
+        this.handleEmailChange   = this.handleEmailChange.bind(this);        
+        this.handleSelectedPizza   = this.handleSelectedPizza.bind(this);
+        this.handleZipcodeChange = this.handleZipcodeChange.bind(this);
 
     };
 
-    handleOrderSubmit(email){
+    handleOrderSubmit(){
+
+        
 
         //we'd save to the database here in the future
 
-        this.setState( () => {
-                return {
-                    customer_email: email,
-                }                
-            }
-        );
+        const order = {
+            customer_email: this.state.customer_email,            
+            delivery_zipcode: this.state.delivery_zipcode,
+            order_date: new Date(),
+            pizza_type: this.state.pizza_type,
+        };
+
+        this.props.onSubmit(order);
 
     }
     
-    handleSelectPizza(selected){
+    handleSelectedPizza(selected_pizza){
+
+        const pizza_type = selected_pizza;
 
         this.setState( () => {
                 return {
-                    pizza_type: selected
+                    pizza_type
                 }                
             }
         );
     }
 
-    handleZipcode(event){
+    handleEmailChange(event){
+        const customer_email = event.target.value;
+
+        this.setState( () => {
+            return {
+                customer_email
+            }                
+        }
+    );        
+
+    }
+
+    handleZipcodeChange(event){
+
+        const delivery_zipcode = event.target.value;
 
         this.setState( () => {
                 return {
@@ -187,12 +147,34 @@ class PizzaForm extends React.Component{
         return (
             <div>
                 <div className="card-group">
-                    <PizzaEntry onClick={this.handleSelectPizza} pizza_type="Cheese"/>
-                    <PizzaEntry onClick={this.handleSelectPizza} pizza_type="Pepperoni" />
-                    <PizzaEntry onClick={this.handleSelectPizza} pizza_type="Supreme" />
+                    <PizzaEntry onClick={this.handleSelectedPizza} pizza_type="Cheese"/>
+                    <PizzaEntry onClick={this.handleSelectedPizza} pizza_type="Pepperoni" />
+                    <PizzaEntry onClick={this.handleSelectedPizza} pizza_type="Supreme" />
                 </div>
-                <ZipCodeInput onChange={this.handleZipcode}/>
-                <UserAccountInput onSubmit={this.handleOrderSubmit} />
+                <div className="form-group">
+                <input className="form-control" 
+                       id="zipcodeInput" 
+                       onChange={this.handleZipcodeChange}                       
+                       placeholder="Delivery zip code" 
+                       type="text"
+                       value={this.state.delivery_zipcode}  />
+                </div>
+                <div className="input-group mb-3">
+                    <input 
+                        className="form-control"            
+                        id="emailInput"
+                        onChange={this.handleEmailChange}
+                        placeholder="User email address"
+                        type="text"
+                        value={this.state.customer_email} />
+                    <div className="input-group-append">
+                        <button className="btn btn-primary" 
+                                id="button-addon2"
+                                onClick={this.handleOrderSubmit}>
+                            Submit
+                        </button>
+                    </div>
+                </div>
             </div>
         );
     };
@@ -209,6 +191,7 @@ class PizzaBanditComponent extends React.Component{
             delivery_zipcode:'',            
             order_date: new Date(),
             pizza_type: '',
+            style_value: 'badge badge-warning'
         }
 
         this.state = this.initialState;
@@ -229,7 +212,8 @@ class PizzaBanditComponent extends React.Component{
                 return {
                     customer_email: order.customer_email,
                     delivery_zipcode: order.delivery_zipcode,
-                    pizza_type: order.pizza_type,
+                    pizza_type: order.pizza_type + " Pizza",
+                    style_value: "badge badge-primary"
                 }                
             }
         );
@@ -250,10 +234,10 @@ class PizzaBanditComponent extends React.Component{
                 </div>
                 <div className="row">
                     <div className="col">
-                        <p>
-                            {this.state.customer_email}
-                            {this.state.delivery_zipcode}
-                        </p>
+                        <span className={this.state.style_value}>Date: </span> {this.state.order_date.toLocaleDateString()}<br />
+                        <span className={this.state.style_value}>Order Email: </span> {this.state.customer_email} <br />
+                        <span className={this.state.style_value}>Order Zipcode: </span> {this.state.delivery_zipcode} <br />
+                        <span className={this.state.style_value}>Order Item: </span> {this.state.pizza_type} <br />
                     </div>                    
                 </div>
             </div>

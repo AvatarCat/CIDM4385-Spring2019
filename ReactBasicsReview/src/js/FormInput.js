@@ -10,7 +10,7 @@ const FormInput = (props) => {
         [
             React.createElement('label', 
                                 {
-                                    for: "exampleInputEmail1"
+                                    htmlFor: "exampleInputEmail1"
                                 }, 
                                 "Email address"
             ),

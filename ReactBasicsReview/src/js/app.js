@@ -1,5 +1,21 @@
-var root = document.getElementById('root');
+class AppComponent extends React.Component {
 
+    //constructor
+    constructor(props){
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <ZipCodeInput specialcode="okay" />
+                <EmailInput />
+            </div>
+        );
+    };
+}
+
+/*
 const App = () => {
     return React.createElement('div', {}, [
         React.createElement('h1', null, "To Do List"),
@@ -10,6 +26,8 @@ const App = () => {
         }),
         React.createElement(FormInput, {}),
     ]);
-};
+};*/
 
-ReactDOM.render(React.createElement(App), root);
+var root = document.getElementById('root');
+// ReactDOM.render(React.createElement(AppComponent), root);
+ReactDOM.render(<AppComponent />, root);

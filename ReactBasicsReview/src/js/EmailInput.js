@@ -3,34 +3,42 @@ class EmailInput extends React.Component {
     //constructor
     constructor(props){
         super(props);
-        this.state = {delivery_email: ''}; 
 
+        //event handlers
         this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleOnFocus = this.handleOnFocus.bind(this);
 
     }
 
+    /* this event handler simply "lifts" state to the parent component */
     handleEmailChange(event){
-        const delivery_email = event.target.value;
-        this.setState( () => {
-                return {
-                    delivery_email
-                }
-            }
-        );
+        const email = event.target.value;
+        this.props.onEmailChange(email);
+    }
 
-        const zip = this.state.delivery_email;
+    handleOnFocus(event){
+        event.target.valid = true;
+        this.props.onEmailFocus();
     }
 
     render() {
+
+        const email = this.props.email;
+
         return (
             <div className="form-group">
-                <p>{this.props.specialcode}</p>
-                <input className="form-control" 
+                <label htmlFor="exampleInputPassword1">Email</label>
+                <input className={this.props.emailInputValidationClass} 
                        id="emailInput" 
                        onChange={this.handleEmailChange}
+                       onFocus={this.handleOnFocus}
                        placeholder="Your email address" 
                        type="input"
-                       value={this.state.delivery_email}  />
+                       value={email}  
+                       required />
+                <div className="invalid-feedback">
+                    {this.props.emailErrorMessage}
+                </div>          
             </div>
         );
     };

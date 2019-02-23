@@ -8,8 +8,7 @@ class AppComponent extends React.Component {
     render() {
         return (
             <div className="container">
-                <ZipCodeInput specialcode="okay" />
-                <EmailInput />
+                <BasicForm />
             </div>
         );
     };

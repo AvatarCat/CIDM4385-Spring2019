@@ -76,8 +76,6 @@ class BasicForm extends React.Component {
         console.log("you submitted the form " + event.target.type);
         this.state.validation_form_class += " was-validated";
         this.validateForm();
-        
-       
     }
 
     validateForm(){
@@ -159,7 +157,6 @@ class BasicForm extends React.Component {
                                 emailErrorMessage={this.state.error_email} />
 
                     <PasswordInput onPasswordChange={this.handlePasswordChange} 
-                                   onEmailFocus={this.handleEmailOnFocus}                    
                                    passwordInputValidationClass={this.state.validation_input_password_class}
                                    passwordErrorMessage={this.state.error_password} />
 

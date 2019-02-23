@@ -3,7 +3,7 @@ class PasswordInput extends React.Component {
     //constructor
     constructor(props){
         super(props);
-        this.state = {password: ''}; 
+        //this.state = {password: ''}; 
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
 

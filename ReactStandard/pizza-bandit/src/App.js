@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
-
 import LoginForm from './Components/LoginForm';
-
-
 import './App.css';
 
+console.log(process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN);
+console.log(process.env.NODE_ENV);
+
 const Map = ReactMapboxGl({
-  accessToken: 'pk.eyJ1IjoiYWh1aW1hbnU2OSIsImEiOiJjanNpYnZnNG0wbTB6NDlxb3VqbzQ0ZjRpIn0.a4bjWgujDq3W3RxGVeuwVw',
+  accessToken: process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN,
 }); 
 
 class App extends Component {

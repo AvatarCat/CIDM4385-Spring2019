@@ -22,5 +22,9 @@ Why we need them:
 * __jQuery__ is needed by Bootstrap
 * __Popper.js__ is also needed by Bootstrap
 * __Mapbox GL__ and __React Mapbox GL__ a free-(ish) map solution
-* __Dotenv__ is for storing API KEYS that our app uses rather than hard-coding them into our repository
+* __Dotenv__ is for storing API KEYS that our app uses rather than hard-coding them into our repository.  (see note below)
+
+DOTENV note: The ENV features are built into create-react-app now.  See [Adding Custom Environment Variables](https://facebook.github.io/create-react-app/docs/adding-custom-environment-variables) for more.
+
+
 

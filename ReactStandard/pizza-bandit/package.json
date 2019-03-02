@@ -4,8 +4,9 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "dotenv": "^6.2.0",
     "jquery": "^1.12.4",
-    "mapbox-gl": "^0.53.0",
+    "mapbox-gl": "^0.53.1",
     "popper.js": "^1.14.7",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",

@@ -24,18 +24,38 @@ class App extends Component {
       mapstyle: mapstyles[Math.floor(Math.random() * mapstyles.length)],
     };
 
+    this.getPizzaPlacesFromHereAPI = this.getPizzaPlacesFromHereAPI.bind(this);
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
     this.randomizeMapStyle = this.randomizeMapStyle.bind(this);
+    this.setCurrentLocation = this.setCurrentLocation.bind(this);
+
+  }
+  
+  //lifecycle method
+  componentDidMount(){
+
+    //get location from browser
+    this.setCurrentLocation();
+
+    //make rest call
+  }  
+
+  getPizzaPlacesFromHereAPI(){
 
   }
 
+  handleFormSubmission(formdata){
+
+  }    
+
+  /* Randomly select a map style */
   randomizeMapStyle(){
     const selected = this.state.mapstyles[Math.floor(Math.random() * this.state.mapstyles.length)];
     return selected;
-  }
+  }  
 
-  //lifecycle method
-  componentDidMount(){
+  /* get current location from browser/user agent */
+  setCurrentLocation(){
     //check to see if we can get the browser's geolocation
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
@@ -53,10 +73,6 @@ class App extends Component {
     }
   }
 
-  handleFormSubmission(formdata){
-
-  }
-
   render() {
 
     //unpacking the object
@@ -64,13 +80,15 @@ class App extends Component {
 
     return (
       <div className="container">
-        <LoginForm onFormSubmit={this.handleFormSubmission} />
+        <LoginForm onFormSubmit={this.handleFormSubmission} 
+                   title="Pizza Bandit" />
         <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
         <Map style={`mapbox://styles/mapbox/${mapstyle}-v9`}
              center={[lng, lat]}
              containerStyle={{
-              height: "400px",
-              width: "100%"
+               //set height to be 1/3 of available screen height - this is vanilla javascript
+               height: window.screen.availHeight / 3 + "px",
+               width: "100%"
              }}>
              <Layer type="symbol"
                     id="marker"

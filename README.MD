@@ -1,7 +1,12 @@
 # ReactJS Code
 ## CIDM 4385 - Spring 2019
 
-Working through the materials from the ReactJS tutorial (covers 16.x)
+Projects in this REPO:
+* __Pizza Example__
+* __React Basics Review__
+* __React Guide__ Working through the materials from the ReactJS tutorial (covers 16.x)
+* __React Standard__ Using `create-react-app` to develop the Pizza Bandit Example
+* __React Tutorial__ Code from the [ReactJS website](https://reactjs.org/) that follows the tutorial there.
 
 Things we need:
 * Bootstrap: `npm install --save bootstrap`

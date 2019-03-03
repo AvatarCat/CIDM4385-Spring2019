@@ -19,6 +19,12 @@ class PasswordInput extends Component {
     onPasswordChange(event){
         const password = event.target.value;
 
+        this.setState( () => {
+            return {
+              password
+            }
+          }
+        );
     }
 
     render() {

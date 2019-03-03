@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class PizzaPlace extends Component {
+var PizzaPlace = (props) => {
 
-    //constructor
-    constructor(props){
-        super(props);
-    }
+    const {title, vicinity, categoryTitle} = props.placedata;
 
-    render() {
+    //credit for this quickie method to turn the HTML breaks in the
+    //vicinity string to HTML:
+    //https://stackoverflow.com/questions/38850661/outputting-plain-text-with-br-tags-in-jsx
+    function textToHtml(html)
+    {
+        let arr = html.split(/<br\s*\/?>/i);
+        return arr.reduce((el, a) => el.concat(a, <br />), []);
+    }    
 
-        const {title, vicinity, categoryTitle} = this.props.placedata;
-
-        return (
-            <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title">{title}</h5>
-                    <p className="card-text">{vicinity}</p>
-                    <p className="card-text">
-                        <small class="text-muted">{categoryTitle}</small>
-                    </p>
-                </div>
+    return (
+        <div className="card">
+            <div className="card-body">
+                <h5 className="card-title">{title}</h5>
+                <p className="card-text">{textToHtml(vicinity)}</p>
+                <p className="card-text">
+                    <small class="text-muted">{categoryTitle}</small>
+                </p>
             </div>
-        );
-    };
+        </div>
+    );
 }
 
 export default PizzaPlace;

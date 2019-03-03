@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import LoginForm from './Components/LoginForm';
-import './App.css';
 import PizzaPlaces from './Components/PizzaPlaces';
+import './App.css';
 
 console.log(process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN);
 console.log(process.env.NODE_ENV);

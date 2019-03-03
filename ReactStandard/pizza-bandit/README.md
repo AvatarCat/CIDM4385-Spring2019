@@ -24,7 +24,7 @@ The things we need to do then are:
     * react mapbox gl: `npm install --save react-mapbox-gl`
     * dotenv: `npm install --save dotenv`
 3. Update `index.js` and `App.js` to include resources from bootstrap and jquery
-4. Create additional modules
+4. Create additional ReactJS Components
     * Login Form
         * Email Input
         * Password Input

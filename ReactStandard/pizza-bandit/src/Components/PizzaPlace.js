@@ -19,7 +19,7 @@ var PizzaPlace = (props) => {
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">{textToHtml(vicinity)}</p>
                 <p className="card-text">
-                    <small class="text-muted">{categoryTitle}</small>
+                    <small className="text-muted">{categoryTitle}</small>
                 </p>
             </div>
         </div>

@@ -148,8 +148,7 @@ class App extends Component {
 
     return (
       <div className="container">
-        <LoginForm pizza_places={this.state.pizza_place_list}
-                   onFormSubmit={this.handleFormSubmission} 
+        <LoginForm onFormSubmit={this.handleFormSubmission} 
                    title="Pizza Bandit" />
         <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
         <Map style={`mapbox://styles/mapbox/${mapstyle}-v9`}

@@ -7,6 +7,7 @@ Things we need and why we need them:
 * __Popper.js__ is also needed by Bootstrap
 * __Mapbox GL__ and __React Mapbox GL__ a free-(ish) map solution
 * __Dotenv__ is for storing API KEYS that our app uses rather than hard-coding them into our repository.  (see note below)
+* __Here API__ a service for mapping, location, places, georeferencing and other similar services
 
 DOTENV note: The ENV features are built into create-react-app now.  See [Adding Custom Environment Variables](https://facebook.github.io/create-react-app/docs/adding-custom-environment-variables) for more.
 

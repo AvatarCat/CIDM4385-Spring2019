@@ -148,23 +148,33 @@ class App extends Component {
 
     return (
       <div className="container">
+        <div className="row">
         <LoginForm onFormSubmit={this.handleFormSubmission} 
                    title="Pizza Bandit" />
-        <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
-        <Map style={`mapbox://styles/mapbox/${mapstyle}-v9`}
-             center={[lng, lat]}
-             containerStyle={{
-               //set height to be 1/3 of available screen height - this is vanilla javascript
-               height: window.screen.availHeight / 3 + "px",
-               width: "100%"
-             }}>
-             <Layer type="symbol"
-                    id="marker"
-                    layout={{ "icon-image": "marker-15"}}>
-                    <Feature coordinates={[lng, lat]}/>
-             </Layer>
-        </Map>
-        <PizzaPlaces places={this.state.pizza_place_list} />
+        </div>                   
+        <div className="row">
+          <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
+        </div>
+        <div className="row py-3">
+          <Map style={`mapbox://styles/mapbox/${mapstyle}-v9`}
+              center={[lng, lat]}
+              containerStyle={{
+                //set height to be 1/3 of available screen height - this is vanilla javascript
+                height: window.screen.availHeight / 3 + "px",
+                width: "100%"
+              }}>
+              <Layer type="symbol"
+                      id="marker"
+                      layout={{ "icon-image": "marker-15"}}>
+                      <Feature coordinates={[lng, lat]}/>
+              </Layer>
+          </Map>
+        </div>
+        <div className="row">
+          <h1>Pizza Places</h1>        
+          <PizzaPlaces places={this.state.pizza_place_list} />
+        </div>        
+        <div id="formresults" className="row"></div>
       </div>
     );
   }

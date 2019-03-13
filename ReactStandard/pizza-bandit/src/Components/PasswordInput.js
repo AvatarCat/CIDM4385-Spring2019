@@ -1,45 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class PasswordInput extends Component {
+var PasswordInput = (props) => {
 
-    //constructor
-    constructor(props){
-        super(props);
+    let password = '';
 
-        //state
-        this.state = {
-            password: ''
-        }
-
-        //even handlers
-        this.onPasswordChange = this.onPasswordChange.bind(this);        
-
+    const onPasswordChange = (event) => {
+        password = event.target.value;
     }
 
-    onPasswordChange(event){
-        const password = event.target.value;
+    return(
+        <div className="form-group">
+        <label htmlFor="exampleInputPassword1">Password</label>
+        <input className="form-control" 
+               id="exampleInputPassword1" 
+               onChange={onPasswordChange}
+               placeholder="Password" 
+               type="password"
+               value={password}  />
+        </div>
+    );
 
-        this.setState( () => {
-            return {
-              password
-            }
-          }
-        );
-    }
-
-    render() {
-        return (
-            <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Password</label>
-                <input className="form-control" 
-                       id="exampleInputPassword1" 
-                       onChange={this.onPasswordChange}
-                       placeholder="Password" 
-                       type="password"
-                       value={this.state.password}  />
-            </div>
-        );
-    };
-}
+};
 
 export default PasswordInput;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-var PasswordInput = (props) => {
+const PasswordInput = (props) => {
 
     let password = '';
 

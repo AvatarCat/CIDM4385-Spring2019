@@ -71,9 +71,9 @@ class LoginForm extends Component {
     render() {
         return (
             <div>
+                <h2>{this.props.form_name}</h2>
                 <form onSubmit={this.onFormSubmit}>
-                    <EmailInput onEmailInputChange={this.onEmailChange} 
-                                test="dubs" />
+                    <EmailInput onEmailInputChange={this.onEmailChange} />
                     <PasswordInput onPasswordInputChange={this.onPasswordChange} />
                     <button type="submit" 
                             className="btn btn-primary">Submit</button>

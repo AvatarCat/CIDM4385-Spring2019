@@ -1,6 +1,6 @@
 import React from 'react';
 
-var EmailInput = (props) => {
+const EmailInput = (props) => {
 
     let email = '';    
 
@@ -15,7 +15,6 @@ var EmailInput = (props) => {
 
     return(
         <div className="form-group">
-        <p>Test message: {props.test}</p>
         <label htmlFor="exampleInputEmail1">Email address</label>
         <input 
             aria-describedby="emailHelp" 

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ReactMapboxGl, {Layer,Feature} from 'react-mapbox-gl';
-
-console.log(process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN);
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const Map = ReactMapboxGl({
     accessToken: process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN,
@@ -20,7 +19,6 @@ class MapboxMap extends Component {
         this.state = {
             lng: -98.5795,
             lat: 39.828175,
-            zoom: 2,
             mapstyle: mapstyles[Math.floor(Math.random() * mapstyles.length)],
         };
 
@@ -87,17 +85,17 @@ class MapboxMap extends Component {
     render(){
 
         //unpacking the object
-        const { lng, lat, zoom, mapstyle } = this.state;
+        const { lng, lat, mapstyle } = this.state;
 
         return(
-            <div className="row">
-                <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>            
+            <div>
+                {/* <div className="mx-auto">{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div> */}
                 <Map style={`mapbox://styles/mapbox/${mapstyle}-v9`}
                     center={[lng, lat]}
                     containerStyle={{
                         //set height to be 1/3 of available screen height - this is vanilla javascript
                         height: window.screen.availHeight / 3 + "px",
-                        width: Math.floor(window.screen.availWidth * 0.5) + "px"
+                        width: Math.floor(window.screen.availWidth * 0.52) + "px"
                         //width: "100%"
                     }}>
                     <Layer type="symbol"

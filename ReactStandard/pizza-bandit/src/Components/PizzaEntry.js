@@ -34,7 +34,7 @@ class PizzaEntry extends Component {
 
         return (
             <div className="card bg-light mb-3">
-                <img src={"src/img/" + this.props.pizza_type + ".png"} className="card-img-top" alt={this.props.pizza_type + " Pizza"} />
+                <img src={"img/" + this.props.pizza_type + ".png"} className="card-img-top" alt={this.props.pizza_type + " Pizza"} />
                 <div className="card-body">
                     <h5 className="card-title">{this.props.pizza_type} Pizza</h5>
                     <p className="card-text">A tasty {this.props.pizza_type} Pizza from a local provider.</p>
@@ -48,3 +48,5 @@ class PizzaEntry extends Component {
         );        
     }
 }
+
+export default PizzaEntry;

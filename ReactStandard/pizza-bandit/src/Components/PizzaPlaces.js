@@ -97,29 +97,17 @@ class PizzaPlaces extends Component{
 
         const places = this.state.pizza_place_list;
         return(
-            <div className="card-columns">
-                {places.map( (place) => 
-                    <PizzaPlace key={place.id} 
-                                placedata={place} />
-                )}
+            <div>
+                <h1>{this.props.title}</h1> 
+                <div className="card-columns">
+                    {places.map( (place) => 
+                        <PizzaPlace key={place.id} 
+                                    placedata={place} />
+                    )}
+                </div>                
             </div>
         );
     }
 }
-
-// var PizzaPlaces = (props) => {
-
-//     const places = props.places;
-
-//     return (
-//         <div className="card-columns">
-//             {places.map( (place) => 
-//                 <PizzaPlace key={place.id} 
-//                             placedata={place} />
-//             )}
-//         </div>
-//     );
-
-// }
 
 export default PizzaPlaces;

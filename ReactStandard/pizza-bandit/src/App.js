@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import JumbotronComponent from './Components/JumbotronComponent';
 import LoginForm from './Components/LoginForm';
 import MapboxMap from './Components/MapboxMap';
+import PizzaForm from './Components/PizzaForm';
 import PizzaPlaces from './Components/PizzaPlaces';
 import './App.css';
 
@@ -18,7 +18,7 @@ class App extends Component {
             lat: 39.828175,
         };
 
-        this.handleFormSubmission = this.handleFormSubmission.bind(this);
+        this.handleLoginFormSubmission = this.handleLoginFormSubmission.bind(this);
         this.handleMapCoordsUpdate = this.handleMapCoordsUpdate.bind(this);
     }
 
@@ -35,7 +35,7 @@ class App extends Component {
         );
     }
 
-    handleFormSubmission(formdata){
+    handleLoginFormSubmission(formdata){
 
     }    
 
@@ -54,16 +54,19 @@ class App extends Component {
                 <LoginForm form_name="Login"
                             onFormSubmit={this.handleFormSubmission}  />
             </div>                   
-            <div className="row py-3">
+            <div className="row py-2">
                 <MapboxMap sendMapCoordsUpdate={this.handleMapCoordsUpdate} />
             </div>
             <div className="row">
-                <h1>Pizza Places</h1>        
+                <PizzaForm />
+            </div>
+            <div className="row">
                 <PizzaPlaces coords={
                             {
                                 lat: lat,
                                 lng: lng,
-                            }} />
+                            }}
+                            title="Pizza Locations" />
             </div>        
             <div id="formresults" className="row"></div>
             </div>

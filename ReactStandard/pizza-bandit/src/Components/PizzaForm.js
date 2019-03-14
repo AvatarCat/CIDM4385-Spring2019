@@ -111,3 +111,5 @@ class PizzaForm extends Component{
         );
     };
 }
+
+export default PizzaForm;

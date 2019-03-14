@@ -11,13 +11,12 @@ class LoginForm extends Component {
         this.state = {
             email: '',
             password: '',
-            results: '',
+            user: {},
         }
 
         this.onEmailChange = this.onEmailChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
-
     }
 
     //method to receive lifted Email state from child
@@ -54,17 +53,23 @@ class LoginForm extends Component {
 
         event.preventDefault();
 
-        const results = "Email address is: " + this.state.email;
+        //create a user object to send back to App
+        const user = {
+            email: this.state.email,
+            password: this.state.password
+        };
 
         this.setState( () => {
                 return {
-                    results
+                    user
                 };
             }
         );
 
+        console.log(`LOGIN_FORM: ${user.email} has entered a password for authentication`);        
+
         //this is also lifting state to the parent
-        this.props.onFormSubmit(results);
+        this.props.onFormSubmit(user);
 
     }
 
@@ -76,7 +81,7 @@ class LoginForm extends Component {
                     <EmailInput onEmailInputChange={this.onEmailChange} />
                     <PasswordInput onPasswordInputChange={this.onPasswordChange} />
                     <button type="submit" 
-                            className="btn btn-primary">Submit</button>
+                            className="btn btn-primary">Login</button>
                 </form>
             </div>            
         );

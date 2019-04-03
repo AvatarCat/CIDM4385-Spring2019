@@ -1,15 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Config from 'react-native-config';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { DARK_SKY_API_KEY } from 'react-native-dotenv';
+
 
 export default class App extends React.Component {
 
   constructor(props){
     super(props);
-    this.getLocation = this.getLocation.bind(this);
-    this.showPosition = this.showPosition.bind(this);
-    this.showDarkSkyTemperature = this.showDarkSkyTemperature(this);
-    this.doFtoC = this.doFtoC.bind(this);
+
 
     this.state = {
       lat: 0,
@@ -18,7 +16,14 @@ export default class App extends React.Component {
       tempF: 0,
       tempC: 0,
       tempUnit: 'F',
+      givenName: 'Stranger',
     };
+    
+    this.getLocation = this.getLocation.bind(this);
+    this.showPosition = this.showPosition.bind(this);
+    this.getDarkSkyTemperature = this.getDarkSkyTemperature.bind(this);
+    this.handleTempUnitButtonPress = this.handleTempUnitButtonPress.bind(this);
+    this.doFtoC = this.doFtoC.bind(this);
 
   }
 
@@ -44,6 +49,9 @@ export default class App extends React.Component {
         lon: position.coords.longitude,
       }
     );
+
+    this.getDarkSkyTemperature();    
+    console.log(`${this.state.lat} ${this.state.lon}`);
   }
 
   doFtoC(tempF){
@@ -56,32 +64,76 @@ export default class App extends React.Component {
     );
   }
   
-  showDarkSkyTemperature(){
+  getDarkSkyTemperature(){
 
-    const {lat, lon} = this.state;
+    const {lat, lon,} = this.state;
     const url = "https://api.darksky.net/forecast/";
-    const api = Config.DARK_SKY_API_KEY;
+    const api = DARK_SKY_API_KEY;
 
-    //https://api.darksky.net/forecast/692503121283ca651d6fd8ff4e1761e9/37.8267,-122.4233
-    fetch(url.concat("/", api, "/", lat, ",", lon))
-      .then((response) => response.json())
+    fetch(url + api +  "/" + lat +  "," + lon)
+      // .then((response) => console.log(response))
+      .then( (response) => response.json() )
       .then((responseJson) => {
-        this.setState({
 
+        console.log(responseJson);
+
+        this.setState({
+          tempF: responseJson.currently.temperature,
         })
+
+        this.doFtoC(responseJson.currently.temperature);
       })
       .catch((error) => {
+        this.setState(
+          {
+            error
+          }
+        );
         console.error(error);
       });    
 
   }
 
+  handleTempUnitButtonPress( event ){
+    if(this.state.tempUnit == 'F'){
+      this.setState({
+        tempUnit: 'C'
+      })
+    }else{
+      this.setState({
+        tempUnit: 'F'
+      })      
+    }
+  }  
+
   render() {
+
+    let tempvalue = '';
+
+    //math.round: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+    if(this.state.tempUnit == 'F'){
+      tempvalue = Math.round(this.state.tempF);
+    }else{
+      tempvalue = Math.round(this.state.tempC);
+    }
+
     return (
       <View style={styles.container}>
-        <Text>Lat:{this.state.lat} Lon:{this.state.lon}</Text>
+        {/* <Text>Lat:{this.state.lat} Lon:{this.state.lon}</Text> */}
         <Text>{this.state.error}</Text>
-      </View>
+        <TextInput 
+          placeholder="Enter your name here"
+          onChangeText={ (givenName) => this.setState( { givenName } ) }
+          style={{height:30, width:120 }}
+          textAlign={'center'} />
+        <Text>Hello, {this.state.givenName}, the temperature is: </Text>
+        <Text>{tempvalue} {this.state.tempUnit}</Text>
+        <Button 
+          onPress={this.handleTempUnitButtonPress}
+          title="Change Temp Unit"
+          style={styles.buttonTemp}
+          />
+      </View>          
     );
   }
 }
@@ -89,8 +141,15 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
   },
+  buttonTemp: {
+    color: "#841584",
+    borderWidth: 1,
+    padding: 25,
+    borderColor: 'black',
+    backgroundColor: 'red',
+  }
 });
